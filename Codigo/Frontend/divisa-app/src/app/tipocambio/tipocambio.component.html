@@ -1,0 +1,57 @@
+<div class="container py-4">
+  <div class="card border-dark bg-light mb-3 my-3">
+    <div class="card-header font-weight-bold">{{tituloTipoCambio}}</div>
+    <div class="card-body text-primary">
+
+      <div class="my-2 text-left">
+        <button class="btn btn-outline-info btn-rounded font-weight-bold" type="button"
+                [routerLink]="['/tipo-cambio/form']">
+          Nueva Consulta
+        </button>
+      </div>
+
+      <!-- Tabla responsiva -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped" *ngIf="tiposCambio">
+          <thead class="thead-inverse bg-info text-white">
+          <tr>
+            <th>ID</th>
+            <th>DIVISA</th>
+            <th>CODIGO</th>
+            <th>COMPRA</th>
+            <th>VENTA</th>
+            <th>EDITAR</th>
+            <th>ELIMINAR</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let tipocambio of tiposCambio">
+            <td class="text-black-50 font-weight-bold ">{{ tipocambio.id }}</td>
+            <td class="text-black-50 font-weight-bold col-md-3">{{ tipocambio.divisa }}</td>
+            <td class="text-black-50 font-weight-bold col-md-3">{{ tipocambio.codigo }}</td>
+            <td class="text-black-50 font-weight-bold col-md-3">{{ tipocambio.compra }}</td>
+            <td class="text-black-50 font-weight-bold col-md-3">{{ tipocambio.venta }}</td>
+
+            <td>
+              <button type="button" name="button" [routerLink]="['/tipo-cambio/form',tipocambio.id]"
+                      class="btn btn-outline-success font-weight-bold">
+                Editar
+              </button>
+            </td>
+
+            <td>
+              <button type="button" name="button" (click)="deleteTipoCambio(tipocambio)"
+                      class="btn btn-outline-danger font-weight-bold">
+                Eliminar
+              </button>
+            </td>
+
+          </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<div class="container py-4">
+  <div class="card border-dark bg-light mb-3 my-3">
+    <div class="card-header font-weight-bold">{{tituloUsuarios}}</div>
+    <div class="card-body text-primary">
+
+      <!-- Tabla responsiva -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped" *ngIf="usuarios">
+          <thead class="thead-inverse bg-info text-white">
+          <tr>
+            <th>ID</th>
+            <th>ENABLE</th>
+            <th>PASSWORD</th>
+            <th>ESTADO</th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let usuario of usuarios">
+            <td class="text-black-50 font-weight-bold ">{{ usuario.id }}</td>
+            <td class="text-black-50 font-weight-bold col-md-3">{{ usuario.username }}</td>
+            <td class="text-black-50 font-weight-bold col-md-3">{{ usuario.password }}</td>
+
+            <td>
+              <span class="btn btn-outline-danger " *ngIf="!usuario.enable else elseBlock">
+<!--                <i class="fas fa-user-alt-slash"></i>-->
+                                INHABILITADO
+              </span>
+              <ng-template #elseBlock>
+                <span class="btn btn-outline-info"  >
+<!--                  <i class="fas fa-user-check"></i>-->
+                                    HABILITADO
+                </span>
+              </ng-template>
+            </td>
+
+          </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

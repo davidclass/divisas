@@ -1,0 +1,59 @@
+<div class="card bg-light text-black-50 my-3 col-sm-9">
+  <div class="card-header font-weight-bold">{{ tituloFormTipoCambio }}</div>
+  <div class="card-body">
+
+    <form #tipoCambioForm="ngForm">
+
+      <!--      DIVISA-->
+      <div class="form-group row col-sm-9">
+        <label for="divisa" class="col-form-label col-sm-3">DIVISA</label>
+        <div class="col-sm-9">
+          <input type="text" class="form-control" [(ngModel)]="tipoCambio.divisa" name="divisa">
+        </div>
+      </div>
+
+      <!--      ABREVIATURA-->
+      <div class="form-group row col-sm-6">
+        <label for="codigo" class="col-form-label col-sm-6">ABREVIATURA</label>
+        <div class="col-sm-6">
+          <input type="text" class="form-control" [(ngModel)]="tipoCambio.codigo" name="codigo">
+        </div>
+      </div>
+
+      <!--      COMPRA-->
+      <div class="form-group row col-sm-6">
+        <label for="compra" class="col-form-label col-sm-6">COMPRA</label>
+        <div class="col-sm-6">
+          <input type="number" class="form-control" [(ngModel)]="tipoCambio.compra" name="compre">
+        </div>
+      </div>
+
+      <!--      VENTA-->
+      <div class="form-group row col-sm-6">
+        <label for="venta" class="col-form-label col-sm-6">VENTA</label>
+        <div class="col-sm-6">
+          <input type="number" class="form-control" [(ngModel)]="tipoCambio.venta" name="venta">
+        </div>
+      </div>
+
+
+      <!--      BOTON-->
+      <div class="form-group row">
+        <div class="col-sm-6">
+          <button class="btn btn-outline-primary" role="button" (click)="createTipoCambio()" *ngIf="!tipoCambio.id else elseBlock" [disabled]="!tipoCambioForm.form.valid">
+            Guardar
+          </button>
+          <ng-template #elseBlock>
+            <button class="btn btn-outline-primary" role="button" (click)="updateTipoCambio()" [disabled]="!tipoCambioForm.form.valid">
+              Editar
+            </button>
+          </ng-template>
+          <button class="btn btn-outline-danger" role="button" [routerLink]="['/tipo-cambio']">
+            Cancelar
+          </button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

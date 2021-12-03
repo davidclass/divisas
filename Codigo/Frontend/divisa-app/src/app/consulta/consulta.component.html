@@ -1,0 +1,45 @@
+<div class="container py-4">
+  <div class="card border-dark bg-light mb-3 my-3">
+    <div class="card-header font-weight-bold">{{tituloConsultas}}</div>
+    <div class="card-body text-primary">
+
+      <div class="my-2 text-left">
+        <button class="btn btn-outline-info btn-rounded font-weight-bold" type="button" [routerLink]="['/consultas/form']">
+          Nueva Consulta
+        </button>
+      </div>
+
+      <!-- Tabla responsiva -->
+      <div class="table-responsive">
+        <table class="table table-bordered table-striped" *ngIf="consultas">
+          <thead class="thead-inverse bg-info text-white">
+          <tr>
+            <th>ID</th>
+            <th>MONTO</th>
+            <th>ORIGEN</th>
+            <th>DESTINO</th>
+
+          </tr>
+          </thead>
+
+          <tbody>
+          <tr *ngFor="let consulta of consultas">
+<!--            <td class="text-black-50 font-weight-bold ">{{ consulta.id }}</td>-->
+            <td>
+              <button type="button" [routerLink]="['/consultas/ver',consulta.id]"
+                      class="btn btn-outline-primary font-weight-bold">{{ consulta.id }}
+              </button>
+            </td>
+
+            <td class="text-black-50 font-weight-bold col-md-3">{{ consulta.monto }}</td>
+            <td class="text-black-50 font-weight-bold col-md-3">{{ consulta.moneda_origen }}</td>
+            <td class="text-black-50 font-weight-bold col-md-3">{{ consulta.moneda_destino }}</td>
+
+          </tr>
+          </tbody>
+
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
