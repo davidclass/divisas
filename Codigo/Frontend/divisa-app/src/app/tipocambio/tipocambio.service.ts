@@ -13,7 +13,6 @@ export class TipocambioService {
 
   /** VARIABLES **/
   private urlEndPoint: string = "http://localhost:8080/api/tipo-cambio";
-  // private urlEndPoint: string = "http://localhost:8080/api/tipo-cambio";
 
   constructor(private http: HttpClient,
               private router: Router) { }
