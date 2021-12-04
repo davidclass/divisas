@@ -17,6 +17,9 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { TipocambioComponent } from './tipocambio/tipocambio.component';
 import { FormTipocambioComponent } from './tipocambio/form-tipocambio.component';
 import {TipocambioService} from "./tipocambio/tipocambio.service";
+import { DetalleConsultaComponent } from './detalle-consulta/detalle-consulta.component';
+import {DetalleConsultaService} from "./detalle-consulta/detalle-consulta.service";
+import { DetalleComponent } from './detalle-consulta/detalleConsulta/detalle.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/usuarios', pathMatch: 'full'},
@@ -26,7 +29,9 @@ const routes: Routes = [
   {path: 'consultas/form/:id', component: FormConsultaComponent},
   {path: 'tipo-cambio', component: TipocambioComponent},
   {path: 'tipo-cambio/form', component: FormTipocambioComponent},
-  {path: 'tipo-cambio/form/:id', component: FormTipocambioComponent}
+  {path: 'tipo-cambio/form/:id', component: FormTipocambioComponent},
+  {path: 'detalle-consulta', component: DetalleConsultaComponent},
+  {path: 'consultas/ver/:id', component: DetalleComponent},
 
 ];
 
@@ -39,7 +44,9 @@ const routes: Routes = [
     ConsultaComponent,
     FormConsultaComponent,
     TipocambioComponent,
-    FormTipocambioComponent
+    FormTipocambioComponent,
+    DetalleConsultaComponent,
+    DetalleComponent
   ],
   imports: [
     BrowserModule,
@@ -50,7 +57,8 @@ const routes: Routes = [
   providers: [
     UsuarioService,
     ConsultaService,
-    TipocambioService
+    TipocambioService,
+    DetalleConsultaService
   ],
   bootstrap: [AppComponent]
 })

@@ -20,8 +20,7 @@ export class ConsultaService {
   private httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(private http: HttpClient,
-              private router: Router,
-              private tipocambioService: TipocambioService ) { }
+              private router: Router ) { }
 
   /** METODOS **/
   getConsultas(): Observable<Consulta[]>{

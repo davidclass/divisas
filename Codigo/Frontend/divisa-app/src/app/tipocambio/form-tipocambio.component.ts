@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Consulta} from "../consulta/consulta";
 import {Tipocambio} from "./tipocambio";
 import {ActivatedRoute, Router} from "@angular/router";
 import {TipocambioService} from "./tipocambio.service";
+
+import Swal from "sweetalert2";
 
 @Component({
   selector: 'app-form',
@@ -17,7 +19,8 @@ export class FormTipocambioComponent implements OnInit {
 
   constructor(private tipocambioService: TipocambioService,
               private router: Router,
-              private activateRoute: ActivatedRoute) { }
+              private activateRoute: ActivatedRoute) {
+  }
 
   ngOnInit(): void {
 
@@ -25,7 +28,7 @@ export class FormTipocambioComponent implements OnInit {
 
   }
 
-  cargarTipoCambio(){
+  cargarTipoCambio() {
     this.activateRoute.paramMap.subscribe(params => {
       let id = params.get('id');
       if (id) {
@@ -34,12 +37,22 @@ export class FormTipocambioComponent implements OnInit {
     });
   }
 
-  createTipoCambio(){
+  createTipoCambio(): void {
+
+    this.tipocambioService.createDivisa(this.tipoCambio).subscribe(
+      response => this.router.navigate(['/tipo-cambio'])
+    );
+    console.log("Divisa creada");
 
   }
 
-  updateTipoCambio(){
-
+  updateTipoCambio() {
+    this.tipocambioService.updateDivisa(this.tipoCambio).subscribe(
+      response => {
+        this.router.navigate(['/tipo-cambio'])
+        Swal.fire('Tipo Cambio Actualizado', `${this.tipoCambio.codigo}: ${this.tipoCambio.divisa}`, 'success');
+      }
+    );
   }
 
 }

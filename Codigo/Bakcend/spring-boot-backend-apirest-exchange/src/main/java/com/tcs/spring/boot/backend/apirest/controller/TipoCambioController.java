@@ -147,4 +147,26 @@ public class TipoCambioController {
         response.put("tipoCambio", tipoCambioUpdated);
         return new ResponseEntity<Map<String, Object>>(response, HttpStatus.CREATED);
     }
+
+    //Eliminar un cursos por su ID
+    @DeleteMapping("/tipo-cambio/{id}")
+    public ResponseEntity<?> delete(@PathVariable long id){
+
+        Map<String, Object> response = new HashMap<>();
+
+        try {
+            tipoCambioService.delete(id);
+
+        }catch (DataAccessException e){
+            response.put("mensaje", "Error al eliminar el ipo de cambio en la base de datos.");
+            response.put("error", e.getMessage().concat(": ").concat(e.getMostSpecificCause().getMessage()) );
+            return new ResponseEntity<Map<String, Object>>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        response.put("mensaje", "El tipo de cambio ha sido eliminado con éxito!");
+
+        return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+
+
+    }
 }
